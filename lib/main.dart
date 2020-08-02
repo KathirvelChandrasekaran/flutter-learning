@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'quoteCard.dart';
 import 'quote.dart';
-
 void main() => runApp(MaterialApp(
       home: QuotesList(),
     ));
@@ -17,38 +17,6 @@ class _QuotesListState extends State<QuotesList> {
     Quote(author: "Vivek", text: "Ivan romba adikran da")
   ];
 
-  Widget quoteTemplate(quote) {
-    return Card(
-      margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              quote.text,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.grey[600]
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              quote.author,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey[800],
-                fontWeight: FontWeight.bold,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,11 +27,13 @@ class _QuotesListState extends State<QuotesList> {
         backgroundColor: Colors.black,
       ),
       body: Column(
-        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
       ),
     );
   }
 }
+
+
 
 //class KathirCards extends StatefulWidget {
 //  @override
