@@ -4,7 +4,16 @@ void main() => runApp(MaterialApp(
       home: KathirCards(),
     ));
 
-class KathirCards extends StatelessWidget {
+class KathirCards extends StatefulWidget {
+  @override
+  _KathirCardsState createState() => _KathirCardsState();
+}
+
+class _KathirCardsState extends State<KathirCards> {
+
+  int level = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +23,17 @@ class KathirCards extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[900],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            level++;
+          });
+        },
+        child: Icon(
+          Icons.add
+        ),
+        backgroundColor: Colors.grey,
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -56,7 +76,7 @@ class KathirCards extends StatelessWidget {
               height: 15,
             ),
             Text(
-              '10',
+              '$level',
               style: TextStyle(
                   color: Colors.pink[200],
                   letterSpacing: 2,
